@@ -28,7 +28,7 @@ class Registrar
     /**
      * Instantiate the library
      *
-     * @param string|null $args
+     * @param array $args
      *
      * @return Registrar
      */
