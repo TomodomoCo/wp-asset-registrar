@@ -16,7 +16,8 @@
   "prefer-stable": true,
   "repositories": [],
   "require": {
-    "php": "^7.0"
+    "php": "^7.0",
+    "danielstjules/stringy": "^3.1"
   },
   "autoload": {
     "psr-4": {
@@ -26,4 +27,3 @@
     }
   }
 }
-

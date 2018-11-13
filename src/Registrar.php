@@ -2,6 +2,8 @@
 
 namespace Tomodomo\WpAssetRegistrar;
 
+use function Stringy\create as s;
+
 class Registrar
 {
     /**
@@ -61,10 +63,17 @@ class Registrar
 
         $defaults = [
             'dependencies' => [],
-            'version'      => filemtime($this->args['basePath'] . $path),
             'footer'       => true,
-            'url'          => $this->args['urlPath'] . $path,
+            'version'      => null,
         ];
+
+        // Handle cases where a full URL is passed in
+        if (s($path)->startsWith('http')) {
+            $defaults['url'] = $path;
+        } else {
+            $defaults['version'] = filemtime($this->args['basePath'] . $path);
+            $defaults['url']     = $this->args['urlPath'] . $path;
+        }
 
         $args = wp_parse_args($args, $defaults);
 
